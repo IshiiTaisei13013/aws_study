@@ -19,6 +19,7 @@ import java.util.Map;
 
 public class Words implements RequestHandler<Map<String,String>, String> {
 
+    //環境変数の読み込み
     static final String S3_ACCESS_KEY = System.getenv("ACCESS_KEY");
     static final String S3_SECRET_KEY = System.getenv("SECRET_KEY");
     static final String S3_BUCKET_NAME = System.getenv("S3_BUCKET_NAME");
@@ -81,33 +82,26 @@ public class Words implements RequestHandler<Map<String,String>, String> {
 
     @Override
     public String handleRequest(Map<String, String> event, Context context) {
-        System.out.println("upload start");
 
-//        //クライアント認証
-//        AmazonS3 S3Client = authS3Client();
-//
-//        //final PutObjectRequest putRequest = new PutObjectRequest(S3_BUCKET_NAME,file.getName(),fis,om);
-//
-//        // 権限の設定
-//        //putRequest.setCannedAcl(CannedAccessControlList.PublicRead);
-//
-//        // upload
-//        //S3Client.putObject(putRequest);
-//
-//        S3Object xFile = S3Client.getObject(S3_BUCKET_NAME, S3_BUCKET_KEY);
-//        InputStream objectData = xFile.getObjectContent();
-//
-//        try {
-//            ByteArrayOutputStream result = new ByteArrayOutputStream();
-//            byte[] buffer = new byte[1024];
-//            for (int length; (length = objectData.read(buffer)) != -1; ) {
-//                result.write(buffer, 0, length);
-//            }
-//            // StandardCharsets.UTF_8.name() > JDK 7
-//            return result.toString("UTF-8");
-//        } catch (IOException e) {
-//            return "IOException";
-//        }
-        return event.toString();
+        //クライアント認証
+        AmazonS3 S3Client = authS3Client();
+
+        //S3からファイルを取得
+        S3Object S3File = S3Client.getObject(S3_BUCKET_NAME, S3_BUCKET_KEY);
+        InputStream S3ObjectStream = S3File.getObjectContent();
+
+        try {
+            //出力できるように変換
+            ByteArrayOutputStream result = new ByteArrayOutputStream();
+            byte[] buffer = new byte[1024];
+            for (int length; (length = S3ObjectStream.read(buffer)) != -1; ) {
+                result.write(buffer, 0, length);
+            }
+            // StandardCharsets.UTF_8.name() > JDK 7
+            return result.toString("UTF-8");
+        } catch (IOException e) {
+            return "IOException";
+        }
+        //return event.toString();
     }
 }
