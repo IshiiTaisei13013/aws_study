@@ -60,6 +60,7 @@ public class Words implements RequestHandler<Map<String,String>, String> {
         //Keyで取得
         String prefecture = jsonObject.get(requestKey).toString();
 
+        //都道府県を返す
         return prefecture;
     }
 }
