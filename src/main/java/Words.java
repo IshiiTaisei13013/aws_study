@@ -21,8 +21,8 @@ public class Words implements RequestHandler<Map<String,String>, String> {
 
     static final String S3_ACCESS_KEY           = System.getenv("ACCESS_KEY");
     static final String S3_SECRET_KEY           = System.getenv("SECRET_KEY");
-    static final String S3_BUCKET_NAME          = System.getenv("TARGET_BUCKET_NAME");
-    static final String S3_BUCKET_KEY           = System.getenv("Sample.json");
+    static final String S3_BUCKET_NAME          = System.getenv("S3_BUCKET_NAME");
+    static final String S3_BUCKET_KEY           = System.getenv("S3_BUCKET_KEY");
 
     public AmazonS3 authS3Client(){
         AmazonS3 s3Client = AmazonS3ClientBuilder.standard()
@@ -80,11 +80,11 @@ public class Words implements RequestHandler<Map<String,String>, String> {
 //    }
 
     @Override
-    public String handleRequest(Map<String,String> event, Context context) {
+    public String handleRequest(Map<String,String> event, Context context){
         System.out.println("upload start");
 
         //クライアント認証
-        //AmazonS3 S3Client = authS3Client();
+        AmazonS3 S3Client = authS3Client();
 
         //final PutObjectRequest putRequest = new PutObjectRequest(S3_BUCKET_NAME,file.getName(),fis,om);
 
@@ -94,7 +94,9 @@ public class Words implements RequestHandler<Map<String,String>, String> {
         // upload
         //S3Client.putObject(putRequest);
 
-       return event.toString();
-       //return "How Are You";
+       S3Object xFile = S3Client.getObject(S3_BUCKET_NAME, S3_BUCKET_KEY);
+       InputStream objectData = xFile.getObjectContent();
+
+        return objectData.toString();
     }
 }
