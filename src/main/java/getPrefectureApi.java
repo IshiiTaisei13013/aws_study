@@ -8,9 +8,10 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
 import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.util.Map;
 
-public class Words implements RequestHandler<Map<String,String>, String> {
+public class getPrefectureApi implements RequestHandler<Map<String,String>, String> {
 
     //環境変数の読み込み
     static final String S3_BUCKET_NAME = System.getenv("S3_BUCKET_NAME");
@@ -31,16 +32,15 @@ public class Words implements RequestHandler<Map<String,String>, String> {
         JSONObject jsonObject = null;
         try {
             jsonObject = (JSONObject)jsonParser.parse(
-                    new InputStreamReader(inputstream, "UTF-8"));
+                    new InputStreamReader(inputstream, StandardCharsets.UTF_8));
             return jsonObject;
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ParseException e) {
+        } catch (IOException | ParseException e) {
             e.printStackTrace();
         }
         return null;
     }
 
+    //リクエストで受け取った郵便番号から都道府県を返す
     @Override
     public String handleRequest(Map<String, String> event, Context context) {
 
@@ -57,9 +57,11 @@ public class Words implements RequestHandler<Map<String,String>, String> {
         //request本文からKeyを取得
         String requestKey = event.get("postCode");
 
-        //Keyで取得
-        String prefecture = jsonObject.get(requestKey).toString();
-
-        return prefecture;
+        if(jsonObject != null) {
+            //Keyで取得
+            return jsonObject.get(requestKey).toString();
+        }else{
+            return "jsonObject is null";
+        }
     }
 }
