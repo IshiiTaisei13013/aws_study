@@ -17,8 +17,8 @@ import java.util.Map;
 public class getPrefecture implements RequestHandler<Map<String, String>, String> {
 
     //環境変数の読み込み
-    static final String S3_BUCKET_NAME = System.getenv("S3_BUCKET_NAME");
-    static final String S3_BUCKET_KEY = System.getenv("S3_BUCKET_KEY");
+    static final String S3_BUCKET_NAME  =  System.getenv("S3_BUCKET_NAME");
+    static final String S3_BUCKET_KEY   =  System.getenv("S3_BUCKET_KEY");
 
     //クライアント認証用の関数
     //実行ロールをlambdaにアタッチしないと使えない
@@ -26,6 +26,7 @@ public class getPrefecture implements RequestHandler<Map<String, String>, String
         AmazonS3 s3Client = AmazonS3ClientBuilder.standard()
                 .withRegion(Regions.US_EAST_2)
                 .build();
+
         return s3Client;
     }
 
