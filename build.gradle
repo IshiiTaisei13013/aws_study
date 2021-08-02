@@ -1,7 +1,10 @@
+import java.net.http.HttpClient
+
 plugins{
     id 'java'
     id "com.github.johnrengelman.shadow" version "2.0.3"
 }
+
 
 repositories {
     mavenCentral()

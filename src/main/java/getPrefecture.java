@@ -2,7 +2,8 @@ import com.amazonaws.regions.Regions;
 import com.amazonaws.services.lambda.runtime.Context;
 import com.amazonaws.services.lambda.runtime.RequestHandler;
 import com.amazonaws.services.s3.*;
-import com.amazonaws.services.s3.model.*;
+
+import com.amazonaws.services.s3.model.S3Object;
 import org.json.simple.*;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
@@ -11,7 +12,7 @@ import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.util.Map;
 
-public class getPrefectureApi implements RequestHandler<Map<String,String>, String> {
+public class getPrefecture implements RequestHandler<Map<String, String>, String> {
 
     //環境変数の読み込み
     static final String S3_BUCKET_NAME = System.getenv("S3_BUCKET_NAME");
@@ -27,11 +28,13 @@ public class getPrefectureApi implements RequestHandler<Map<String,String>, Stri
         return s3Client;
     }
 
-    private JSONObject InputStreamToJson (InputStream inputstream){
+    //InputStream型をJSONObject型に変換
+    //失敗するとNullを返す
+    private JSONObject InputStreamToJson(InputStream inputstream) {
         JSONParser jsonParser = new JSONParser();
         JSONObject jsonObject = null;
         try {
-            jsonObject = (JSONObject)jsonParser.parse(
+            jsonObject = (JSONObject) jsonParser.parse(
                     new InputStreamReader(inputstream, StandardCharsets.UTF_8));
             return jsonObject;
         } catch (IOException | ParseException e) {
@@ -40,7 +43,15 @@ public class getPrefectureApi implements RequestHandler<Map<String,String>, Stri
         return null;
     }
 
-    //リクエストで受け取った郵便番号から都道府県を返す
+    //イベント確認用のハンドラ
+//    @Override
+//    public String handleRequest(Map<String, String> event, Context context) {
+//
+//        return event.get("postCode");
+//    }
+
+    //リクエスト文で受け取ったKeyに応じたValueを返す
+    //postCodeを受け取って対応した地名、県名を返す
     @Override
     public String handleRequest(Map<String, String> event, Context context) {
 
@@ -51,16 +62,21 @@ public class getPrefectureApi implements RequestHandler<Map<String,String>, Stri
         S3Object S3File = S3Client.getObject(S3_BUCKET_NAME, S3_BUCKET_KEY);
         InputStream S3ObjectStream = S3File.getObjectContent();
 
-        //Jsonに変換
+        //取得したS3のファイルをJsonに変換
         JSONObject jsonObject = InputStreamToJson(S3ObjectStream);
 
         //request本文からKeyを取得
         String requestKey = event.get("postCode");
 
-        if(jsonObject != null) {
-            //Keyで取得
-            return jsonObject.get(requestKey).toString();
-        }else{
+        //変換できなかった場合、jsonObjectにはnullが代入される
+        if (jsonObject != null) {
+            try {
+                //Keyで取得
+                return jsonObject.get(requestKey).toString();
+            }catch (NullPointerException e){
+                return "postCode is not Found.";
+            }
+        } else {
             return "jsonObject is null";
         }
     }
