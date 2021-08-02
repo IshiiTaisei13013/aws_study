@@ -4,6 +4,7 @@ import com.amazonaws.services.lambda.runtime.RequestHandler;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3ClientBuilder;
 import com.amazonaws.services.s3.model.S3Object;
+
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
@@ -14,9 +15,9 @@ import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 import java.util.Map;
 
-public class getPrefecture implements RequestHandler<Map<String, String>, String> {
+public class addPrefecture implements RequestHandler<Map<String, String>, String> {
 
-    //環境変数の読み込み
+    //Lambdaの環境変数を読み込む
     static final String S3_BUCKET_NAME = System.getenv("S3_BUCKET_NAME");
     static final String S3_BUCKET_KEY = System.getenv("S3_BUCKET_KEY");
 
@@ -53,6 +54,7 @@ public class getPrefecture implements RequestHandler<Map<String, String>, String
 
         //eventからKeyを取得(郵便番号を取得)
         String requestKey = event.get("zipcode");
+        String requestValue = event.get("address");
 
         //クライアント認証
         AmazonS3 S3Client = authS3Client();
@@ -68,7 +70,9 @@ public class getPrefecture implements RequestHandler<Map<String, String>, String
         if (jsonObject != null) {
             try {
                 //入力された郵便番号を元に地名を取得
-                return jsonObject.get(requestKey).toString();
+                jsonObject.put(requestKey,requestValue);
+
+                return "file is updated!";
             } catch (NullPointerException e) {
                 //入力された郵便番号は見つからなかった
                 return "zipcode is not Found.";
