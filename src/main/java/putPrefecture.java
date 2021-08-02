@@ -18,7 +18,7 @@ import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 import java.util.Map;
 
-public class addPrefecture implements RequestHandler<Map<String, String>, String> {
+public class putPrefecture implements RequestHandler<Map<String, String>, String> {
 
     //Lambdaの環境変数を読み込む
     static final String S3_BUCKET_NAME = System.getenv("S3_BUCKET_NAME");
@@ -50,8 +50,7 @@ public class addPrefecture implements RequestHandler<Map<String, String>, String
         return null;
     }
 
-    //受け取ったKeyに応じたValueを返す
-    //eventからzipcodeを受け取ってS3上のファイルを参照し、対応した地名、県名を返す
+    //受け取ったKey,ValueでS3ファイルを更新する
     @Override
     public String handleRequest(Map<String, String> event, Context context) {
 
@@ -89,6 +88,7 @@ public class addPrefecture implements RequestHandler<Map<String, String>, String
         //S3にアップロード
         S3Client.putObject(new PutObjectRequest(S3_BUCKET_NAME,S3_BUCKET_KEY,is,meta));
 
+        //成功メッセージ
         return "S3 file is updated!";
     }
 }
