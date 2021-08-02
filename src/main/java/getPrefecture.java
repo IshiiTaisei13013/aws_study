@@ -41,7 +41,7 @@ public class getPrefecture implements RequestHandler<Map<String, String>, String
         } catch (IOException | ParseException e) {
             e.printStackTrace();
         }
-        //失敗 or 成功はしていないときにNullを返す
+        //失敗したときにNullを返す
         return null;
     }
 
