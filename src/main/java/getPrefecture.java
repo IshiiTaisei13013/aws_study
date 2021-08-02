@@ -31,22 +31,21 @@ public class getPrefecture implements RequestHandler<Map<String, String>, String
     }
 
     //InputStream型をJSONObject型に変換する関数
-    private JSONObject InputStreamToJson(InputStream inputstream) {
-        JSONParser jsonParser = new JSONParser();
-        JSONObject jsonObject = null;
+    private JSONObject InputStreamToJson(InputStream is) {
 
-        try {
-            InputStreamReader inputStreamReader = new InputStreamReader(inputstream, StandardCharsets.UTF_8);
-            jsonObject = (JSONObject) jsonParser.parse(inputStreamReader);
+        InputStreamReader isr = new InputStreamReader(is,StandardCharsets.UTF_8);
+
+        try(isr) {
+            JSONObject jsonObject = (JSONObject) new JSONParser().parse(isr);
             return jsonObject;
         } catch (IOException | ParseException e) {
             e.printStackTrace();
         }
-        //失敗したときにNullを返す
+
+        //どこかで失敗したらnullを返す
         return null;
     }
-
-    //受け取ったKeyに応じたValueを返す
+        //受け取ったKeyに応じたValueを返す
     //eventからzipcodeを受け取ってS3上のファイルを参照し、対応した地名、県名を返す
     @Override
     public String handleRequest(Map<String, String> event, Context context) {
