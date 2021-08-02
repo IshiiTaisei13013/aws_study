@@ -17,8 +17,8 @@ import java.util.Map;
 public class getPrefecture implements RequestHandler<Map<String, String>, String> {
 
     //環境変数の読み込み
-    static final String S3_BUCKET_NAME  =  System.getenv("S3_BUCKET_NAME");
-    static final String S3_BUCKET_KEY   =  System.getenv("S3_BUCKET_KEY");
+    static final String S3_BUCKET_NAME = System.getenv("S3_BUCKET_NAME");
+    static final String S3_BUCKET_KEY = System.getenv("S3_BUCKET_KEY");
 
     //クライアント認証用の関数
     //実行ロールをlambdaにアタッチしないと使えない
@@ -33,9 +33,9 @@ public class getPrefecture implements RequestHandler<Map<String, String>, String
     //InputStream型をJSONObject型に変換する関数
     private JSONObject InputStreamToJson(InputStream is) {
 
-        InputStreamReader isr = new InputStreamReader(is,StandardCharsets.UTF_8);
+        InputStreamReader isr = new InputStreamReader(is, StandardCharsets.UTF_8);
 
-        try(isr) {
+        try (isr) {
             JSONObject jsonObject = (JSONObject) new JSONParser().parse(isr);
             return jsonObject;
         } catch (IOException | ParseException e) {
@@ -45,7 +45,8 @@ public class getPrefecture implements RequestHandler<Map<String, String>, String
         //どこかで失敗したらnullを返す
         return null;
     }
-        //受け取ったKeyに応じたValueを返す
+
+    //受け取ったKeyに応じたValueを返す
     //eventからzipcodeを受け取ってS3上のファイルを参照し、対応した地名、県名を返す
     @Override
     public String handleRequest(Map<String, String> event, Context context) {
