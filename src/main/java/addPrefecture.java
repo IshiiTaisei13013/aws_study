@@ -3,12 +3,15 @@ import com.amazonaws.services.lambda.runtime.Context;
 import com.amazonaws.services.lambda.runtime.RequestHandler;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3ClientBuilder;
+import com.amazonaws.services.s3.model.ObjectMetadata;
+import com.amazonaws.services.s3.model.PutObjectRequest;
 import com.amazonaws.services.s3.model.S3Object;
 
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -68,18 +71,24 @@ public class addPrefecture implements RequestHandler<Map<String, String>, String
 
         //変換できなかった場合、jsonObjectにはnullが代入される
         if (jsonObject != null) {
-            try {
-                //入力された郵便番号を元に地名を取得
-                jsonObject.put(requestKey,requestValue);
-
-                return "file is updated!";
-            } catch (NullPointerException e) {
-                //入力された郵便番号は見つからなかった
-                return "zipcode is not Found.";
-            }
+            //新しいkeyとvalueを追記
+            jsonObject.put(requestKey,requestValue);
         } else {
             //S3の読み込みが失敗または空の可能性がある。
             return "jsonObject is null";
         }
+
+        //JSONObjectをInputStreamに変換
+        String str = jsonObject.toString();
+        InputStream is = new ByteArrayInputStream(str.getBytes(StandardCharsets.UTF_8));
+
+        //metadataを作成
+        ObjectMetadata meta = new ObjectMetadata();
+        meta.setContentLength(str.length());
+
+        //S3にアップロード
+        S3Client.putObject(new PutObjectRequest(S3_BUCKET_NAME,S3_BUCKET_KEY,is,meta));
+
+        return "S3 file is updated!";
     }
 }
