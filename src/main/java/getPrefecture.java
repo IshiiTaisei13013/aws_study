@@ -35,8 +35,8 @@ public class getPrefecture implements RequestHandler<Map<String, String>, String
         JSONObject jsonObject = null;
 
         try {
-            jsonObject = (JSONObject) jsonParser.parse(
-                    new InputStreamReader(inputstream, StandardCharsets.UTF_8));
+            InputStreamReader inputStreamReader = new InputStreamReader(inputstream, StandardCharsets.UTF_8);
+            jsonObject = (JSONObject) jsonParser.parse(inputStreamReader);
             return jsonObject;
         } catch (IOException | ParseException e) {
             e.printStackTrace();
@@ -46,12 +46,12 @@ public class getPrefecture implements RequestHandler<Map<String, String>, String
     }
 
     //受け取ったKeyに応じたValueを返す
-    //postCodeを受け取ってS3上のファイルを参照し、対応した地名、県名を返す
+    //eventからzipcodeを受け取ってS3上のファイルを参照し、対応した地名、県名を返す
     @Override
     public String handleRequest(Map<String, String> event, Context context) {
 
         //eventからKeyを取得(郵便番号を取得)
-        String requestKey = event.get("postCode");
+        String requestKey = event.get("zipcode");
 
         //クライアント認証
         AmazonS3 S3Client = authS3Client();
@@ -70,7 +70,7 @@ public class getPrefecture implements RequestHandler<Map<String, String>, String
                 return jsonObject.get(requestKey).toString();
             } catch (NullPointerException e) {
                 //入力された郵便番号は見つからなかった
-                return "postCode is not Found.";
+                return "zipcode is not Found.";
             }
         } else {
             //S3の読み込みが失敗または空の可能性がある。
