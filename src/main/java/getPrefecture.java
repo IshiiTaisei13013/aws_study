@@ -18,9 +18,6 @@ public class getPrefecture implements RequestHandler<Map<String, String>, String
     static final String S3_BUCKET_NAME = System.getenv("S3_BUCKET_NAME");
     static final String S3_BUCKET_KEY = System.getenv("S3_BUCKET_KEY");
 
-    //環境変数から指定するとき用
-    //static final String S3_JSON_KEY = System.getenv("S3_JSON_KEY");
-
     private AmazonS3 authS3Client() {
         AmazonS3 s3Client = AmazonS3ClientBuilder.standard()
                 .withRegion(Regions.US_EAST_2)
@@ -43,14 +40,7 @@ public class getPrefecture implements RequestHandler<Map<String, String>, String
         return null;
     }
 
-    //イベント確認用のハンドラ
-//    @Override
-//    public String handleRequest(Map<String, String> event, Context context) {
-//
-//        return event.get("postCode");
-//    }
-
-    //リクエスト文で受け取ったKeyに応じたValueを返す
+    //受け取ったKeyに応じたValueを返す
     //postCodeを受け取って対応した地名、県名を返す
     @Override
     public String handleRequest(Map<String, String> event, Context context) {
