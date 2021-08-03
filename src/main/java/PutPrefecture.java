@@ -6,7 +6,6 @@ import com.amazonaws.services.s3.AmazonS3ClientBuilder;
 import com.amazonaws.services.s3.model.ObjectMetadata;
 import com.amazonaws.services.s3.model.PutObjectRequest;
 import com.amazonaws.services.s3.model.S3Object;
-
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
@@ -18,7 +17,7 @@ import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 import java.util.Map;
 
-public class PutPrefecture implements RequestHandler<Map<String, String>, String> {
+public class PutPrefecture implements RequestHandler<Map<String, Object>, String> {
 
     //Lambdaの環境変数を読み込む
     static final String S3_BUCKET_NAME = System.getenv("S3_BUCKET_NAME");
@@ -52,11 +51,13 @@ public class PutPrefecture implements RequestHandler<Map<String, String>, String
 
     //受け取ったKey,ValueでS3ファイルを更新する
     @Override
-    public String handleRequest(Map<String, String> event, Context context) {
+    public String handleRequest(Map<String,Object> event, Context context) {
 
-        //eventからKeyを取得(郵便番号を取得)
-        String requestKey = event.get("zipcode");
-        String requestValue = event.get("address");
+        //Jsonが入れ子になっていても型に合わせて取得できる
+        Map<String,String> body = (Map<String, String>) event.get("body");
+
+        String address = body.get("address");
+        String zipcode = body.get("zipcode");
 
         //クライアント認証
         AmazonS3 S3Client = authS3Client();
@@ -70,8 +71,9 @@ public class PutPrefecture implements RequestHandler<Map<String, String>, String
 
         //変換できなかった場合、jsonObjectにはnullが代入される
         if (jsonObject != null) {
+
             //新しいkeyとvalueを追記
-            jsonObject.put(requestKey,requestValue);
+            jsonObject.put(zipcode,address);
         } else {
             //S3の読み込みが失敗または空の可能性がある。
             return "jsonObject is null";

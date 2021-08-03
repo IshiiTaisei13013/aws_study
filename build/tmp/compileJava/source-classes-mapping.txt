@@ -1,2 +1,2 @@
-putPrefecture.java
- putPrefecture
+PutPrefecture.java
+ PutPrefecture
