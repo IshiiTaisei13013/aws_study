@@ -17,7 +17,7 @@ import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 import java.util.Map;
 
-public class PutPrefecture implements RequestHandler<Map<String, Object>, String> {
+public class DeletePrefecture implements RequestHandler<Map<String, Object>, String> {
 
     //Lambdaの環境変数を読み込む
     static final String S3_BUCKET_NAME = System.getenv("S3_BUCKET_NAME");
@@ -49,14 +49,14 @@ public class PutPrefecture implements RequestHandler<Map<String, Object>, String
         return null;
     }
 
-    //受け取ったKey,ValueでS3ファイルを更新する
+    //受け取ったKeyでS3上のファイルのKeyを削除する
+    //削除後のファイルをアップロードして更新する。
     @Override
     public String handleRequest(Map<String,Object> event, Context context) {
 
         //Jsonが入れ子になっていても型に合わせて取得できる
         Map<String,String> body = (Map<String, String>) event.get("body");
 
-        String address = body.get("address");
         String zipcode = body.get("zipcode");
 
         //クライアント認証
@@ -72,8 +72,8 @@ public class PutPrefecture implements RequestHandler<Map<String, Object>, String
         //変換できなかった場合、jsonObjectにはnullが代入される
         if (jsonObject != null) {
 
-            //新しいkeyとvalueを追記
-            jsonObject.put(zipcode,address);
+            //Keyで削除(zipcodeで削除する)
+            jsonObject.remove(zipcode);
         } else {
             //S3の読み込みが失敗または空の可能性がある。
             return "jsonObject is null";
