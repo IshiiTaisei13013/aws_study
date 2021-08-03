@@ -57,6 +57,7 @@ public class DeletePrefecture implements RequestHandler<Map<String, Object>, Str
         //Jsonが入れ子になっていても型に合わせて取得できる
         Map<String,String> body = (Map<String, String>) event.get("body");
 
+        //zipcodeのみをリクエスト本文から受け取る
         String zipcode = body.get("zipcode");
 
         //クライアント認証
