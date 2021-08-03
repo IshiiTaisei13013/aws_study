@@ -49,7 +49,7 @@ public class PutPrefecture implements RequestHandler<Map<String, Object>, String
         return null;
     }
 
-    //JSONObjectをInputStreamに変換
+    //JSONObject型をInputStream型に変換
     private InputStream jSONObjectToInputStream(JSONObject jo){
         String str = jo.toString();
         InputStream is = new ByteArrayInputStream(str.getBytes(StandardCharsets.UTF_8));
