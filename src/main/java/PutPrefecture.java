@@ -34,7 +34,7 @@ public class PutPrefecture implements RequestHandler<Map<String, Object>, String
     }
 
     //InputStream型をJSONObject型に変換する関数
-    private JSONObject inputStreamToJson(InputStream is) {
+    private JSONObject inputStreamToJSONObject(InputStream is) {
 
         InputStreamReader isr = new InputStreamReader(is, StandardCharsets.UTF_8);
 
@@ -49,6 +49,14 @@ public class PutPrefecture implements RequestHandler<Map<String, Object>, String
         return null;
     }
 
+    //JSONObjectをInputStreamに変換
+    private InputStream jSONObjectToInputStream(JSONObject jo){
+        String str = jo.toString();
+        InputStream is = new ByteArrayInputStream(str.getBytes(StandardCharsets.UTF_8));
+
+        return is;
+    }
+
     //受け取ったKey,ValueでS3ファイルを更新する
     @Override
     public String handleRequest(Map<String,Object> event, Context context) {
@@ -56,6 +64,7 @@ public class PutPrefecture implements RequestHandler<Map<String, Object>, String
         //Jsonが入れ子になっていても型に合わせて取得できる
         Map<String,String> body = (Map<String, String>) event.get("body");
 
+        //リクエスト本文からkeyとvalueを取得
         String address = body.get("address");
         String zipcode = body.get("zipcode");
 
@@ -67,30 +76,22 @@ public class PutPrefecture implements RequestHandler<Map<String, Object>, String
         InputStream S3ObjectStream = S3File.getObjectContent();
 
         //取得したS3のファイルをJsonに変換
-        JSONObject jsonObject = inputStreamToJson(S3ObjectStream);
+        JSONObject jsonObject = inputStreamToJSONObject(S3ObjectStream);
 
-        //変換できなかった場合、jsonObjectにはnullが代入される
-        if (jsonObject != null) {
+        //keyとvalueを追記
+        jsonObject.put(zipcode,address);
 
-            //新しいkeyとvalueを追記
-            jsonObject.put(zipcode,address);
-        } else {
-            //S3の読み込みが失敗または空の可能性がある。
-            return "jsonObject is null";
-        }
-
-        //JSONObjectをInputStreamに変換
-        String str = jsonObject.toString();
-        InputStream is = new ByteArrayInputStream(str.getBytes(StandardCharsets.UTF_8));
+        //InputStream型に戻す
+        InputStream is = jSONObjectToInputStream(jsonObject);
 
         //metadataを作成
         ObjectMetadata meta = new ObjectMetadata();
-        meta.setContentLength(str.length());
+        meta.setContentLength(jsonObject.toString().length());
 
         //S3にアップロード
         S3Client.putObject(new PutObjectRequest(S3_BUCKET_NAME,S3_BUCKET_KEY,is,meta));
 
         //成功メッセージ
-        return "S3 file is updated!";
+        return "S3 file is updated!!";
     }
 }
