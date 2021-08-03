@@ -18,7 +18,7 @@ import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 import java.util.Map;
 
-public class putPrefecture implements RequestHandler<Map<String, String>, String> {
+public class PutPrefecture implements RequestHandler<Map<String, String>, String> {
 
     //Lambdaの環境変数を読み込む
     static final String S3_BUCKET_NAME = System.getenv("S3_BUCKET_NAME");
@@ -35,7 +35,7 @@ public class putPrefecture implements RequestHandler<Map<String, String>, String
     }
 
     //InputStream型をJSONObject型に変換する関数
-    private JSONObject InputStreamToJson(InputStream is) {
+    private JSONObject inputStreamToJson(InputStream is) {
 
         InputStreamReader isr = new InputStreamReader(is, StandardCharsets.UTF_8);
 
@@ -66,7 +66,7 @@ public class putPrefecture implements RequestHandler<Map<String, String>, String
         InputStream S3ObjectStream = S3File.getObjectContent();
 
         //取得したS3のファイルをJsonに変換
-        JSONObject jsonObject = InputStreamToJson(S3ObjectStream);
+        JSONObject jsonObject = inputStreamToJson(S3ObjectStream);
 
         //変換できなかった場合、jsonObjectにはnullが代入される
         if (jsonObject != null) {
