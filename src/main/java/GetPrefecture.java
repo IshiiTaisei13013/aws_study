@@ -14,7 +14,7 @@ import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 import java.util.Map;
 
-public class getPrefecture implements RequestHandler<Map<String, String>, String> {
+public class GetPrefecture implements RequestHandler<Map<String, String>, String> {
 
     //環境変数の読み込み
     static final String S3_BUCKET_NAME = System.getenv("S3_BUCKET_NAME");
