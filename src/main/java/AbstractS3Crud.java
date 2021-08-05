@@ -1,4 +1,5 @@
 import com.amazonaws.regions.Regions;
+import com.amazonaws.services.lambda.runtime.RequestHandler;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3ClientBuilder;
 import org.json.simple.JSONObject;
@@ -10,8 +11,10 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
+import java.util.Map;
 
-public abstract class AbstractS3Crud {
+public abstract class AbstractS3Crud
+        implements RequestHandler<Map<String, Object>, String> {
 
     //Lambdaの環境変数を読み込む
     static final String S3_BUCKET_NAME = System.getenv("S3_BUCKET_NAME");

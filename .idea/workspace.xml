@@ -4,20 +4,23 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0904c5c9-878c-4647-9313-9c422aa2fff3" name="Changes" comment="[update]リファクタ">
+    <list default="true" id="0904c5c9-878c-4647-9313-9c422aa2fff3" name="Changes" comment="[add] template.ymlを追加">
       <change beforePath="$PROJECT_DIR$/.gradle/6.8/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.8/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.8/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.8/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.8/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.8/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.8/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.8/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.8/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.8/javaCompile/classAnalysis.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.8/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.8/javaCompile/javaCompile.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/6.8/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.8/javaCompile/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/PutPrefecture.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/distributions/gradle_java11_test.zip" beforeDir="false" afterPath="$PROJECT_DIR$/build/distributions/gradle_java11_test.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/libs/gradle_java11_test.jar" beforeDir="false" afterPath="$PROJECT_DIR$/build/libs/gradle_java11_test.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/source-classes-mapping.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/source-classes-mapping.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/DeletePrefecture.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/distributions/gradle_java11_test.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/libs/gradle_java11_test.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/AbstractS3Crud.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/AbstractS3Crud.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/PutHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/PutHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/template.yml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,7 +91,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/build/distributions/Lambda_deletePrefecture.zip" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/build/distributions/Lambda_PutHandler.zip" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -172,13 +175,34 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
+    <configuration name="gradle_java11_test [jar]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="jar" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Gradle.gradle_java11_test [build]" />
-        <item itemvalue="Gradle.gradle_java11_test [dependencies]" />
         <item itemvalue="Gradle.gradle_java11_test [clean]" />
-        <item itemvalue="Gradle.gradle_java11_test [build]" />
+        <item itemvalue="Gradle.gradle_java11_test [jar]" />
         <item itemvalue="Gradle.gradle_java11_test [dependencies]" />
+        <item itemvalue="Gradle.gradle_java11_test [build]" />
       </list>
     </recent_temporary>
   </component>
@@ -394,7 +418,21 @@
       <option name="project" value="LOCAL" />
       <updated>1628143457122</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="[update] 周辺をアップデート">
+      <created>1628144270346</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1628144270346</updated>
+    </task>
+    <task id="LOCAL-00031" summary="[add] template.ymlを追加">
+      <created>1628145514630</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1628145514630</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -431,6 +469,8 @@
     <MESSAGE value="[update] リファクタ" />
     <MESSAGE value="[UPD] バージョン修正" />
     <MESSAGE value="[update]リファクタ" />
-    <option name="LAST_COMMIT_MESSAGE" value="[update]リファクタ" />
+    <MESSAGE value="[update] 周辺をアップデート" />
+    <MESSAGE value="[add] template.ymlを追加" />
+    <option name="LAST_COMMIT_MESSAGE" value="[add] template.ymlを追加" />
   </component>
 </project>

@@ -1,5 +1,4 @@
 import com.amazonaws.services.lambda.runtime.Context;
-import com.amazonaws.services.lambda.runtime.RequestHandler;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.model.ObjectMetadata;
 import com.amazonaws.services.s3.model.PutObjectRequest;
@@ -10,8 +9,7 @@ import java.io.InputStream;
 import java.util.Map;
 
 public class PutHandler
-        extends AbstractS3Crud
-        implements RequestHandler<Map<String, Object>, String>{
+        extends AbstractS3Crud {
 
     // POST methodで受け取ったリクエスト本文の
     // zipcodeとaddressでS3上のファイルを更新する
