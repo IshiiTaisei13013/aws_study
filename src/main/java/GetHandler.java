@@ -10,10 +10,10 @@ public class GetHandler extends AbstractS3Crud{
     //受け取ったKeyに応じたValueを返す
     //eventからzipcodeを受け取ってS3上のファイルを参照し、対応した地名、県名を返す
     @Override
-    public String handleRequest(Map<String, String> event, Context context) {
+    public String handleRequest(Map<String, Object> event, Context context) {
 
         //eventからKeyを取得(郵便番号を取得)
-        String requestKey = event.get("zipcode");
+        String requestKey = (String) event.get("zipcode");
 
         //クライアント認証
         AmazonS3 S3Client = authS3Client();
@@ -23,7 +23,7 @@ public class GetHandler extends AbstractS3Crud{
         InputStream S3ObjectStream = S3File.getObjectContent();
 
         //取得したS3のファイルをJsonに変換
-        JSONObject jsonObject = InputStreamToJson(S3ObjectStream);
+        JSONObject jsonObject = inputStreamToJSONObject(S3ObjectStream);
 
         //変換できなかった場合、jsonObjectにはnullが代入される
         if (jsonObject != null) {
