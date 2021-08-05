@@ -11,8 +11,18 @@ import java.nio.charset.StandardCharsets;
 import java.util.Map;
 
 public class DeleteHandler extends AbstractS3Crud{
-    //受け取ったKeyでS3上のファイルのKeyを削除する
-    //削除後のファイルをアップロードして更新する。
+    //項目削除後にファイルをアップロードして更新する。
+
+    // Delete methodで受け取ったリクエスト本文の
+    // zipcodeで削除項目を指定する
+    // 想定するリクエスト本文の形式 (eventの中身)
+    // {
+    //      "body":{
+    //              "zipcode" : "111-1111",
+    //              }
+    // }
+    //
+
     @Override
     public String handleRequest(Map<String,Object> event, Context context) {
 

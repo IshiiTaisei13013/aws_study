@@ -7,6 +7,9 @@ import java.io.InputStream;
 import java.util.Map;
 
 public class GetHandler extends AbstractS3Crud{
+    //Query文字列でzipcodeを指定する
+    // (ex) http://hogehoge/?zipcode=111-1111
+
     //受け取ったKeyに応じたValueを返す
     //eventからzipcodeを受け取ってS3上のファイルを参照し、対応した地名、県名を返す
     @Override
