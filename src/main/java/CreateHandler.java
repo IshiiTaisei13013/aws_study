@@ -11,10 +11,17 @@ import java.nio.charset.StandardCharsets;
 import java.util.Map;
 
 // TODO: 2021/08/05 ファイルを作成する機能に変更する
-// TODO: 2021/08/05 nameとbodyの入れ子構造を受け取れるように
 
 public class CreateHandler extends AbstractS3Crud{
-    //受け取ったJson形式のファイルで更新を行う。
+    //受け取った名前のファイルを作成する
+    // 想定するリクエスト本文の形式 (eventの中身)
+    // {
+    //      "body":{
+    //              "name" : "newFile.json",
+    //              }
+    // }
+    //
+
     @Override
     public String handleRequest(Map<String,Object> event, Context context) {
 
@@ -24,10 +31,10 @@ public class CreateHandler extends AbstractS3Crud{
         //クライアント認証
         AmazonS3 S3Client = authS3Client();
 
-        //受け取ったnameとbodyを元にファイルを形成？
+        String name = body.get("name");
 
         //S3にアップロード
-        S3Client.putObject(new PutObjectRequest(S3_BUCKET_NAME,S3_BUCKET_KEY,is,meta));
+        S3Client.putObject(new PutObjectRequest(S3_BUCKET_NAME,name,null,null));
 
         //成功メッセージ
         return "S3 file is updated!";
