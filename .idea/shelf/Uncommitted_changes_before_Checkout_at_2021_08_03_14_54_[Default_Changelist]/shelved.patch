@@ -1,0 +1,24 @@
+Index: build.gradle
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>plugins{\r\n    id 'java'\r\n    id \"com.github.johnrengelman.shadow\" version \"2.0.3\"\r\n}\r\n\r\n\r\nrepositories {\r\n    mavenCentral()\r\n}\r\n\r\ntasks.withType(JavaCompile) {\r\n    options.encoding = 'UTF-8'\r\n}\r\n\r\ndependencies {\r\n    implementation 'com.amazonaws:aws-java-sdk-core:1.9.23'\r\n    implementation 'com.amazonaws:aws-lambda-java-core:1.1.0'\r\n    implementation 'com.amazonaws:aws-lambda-java-events:1.1.0'\r\n//    implementation 'com.google.code.gson:gson:2.8.5'\r\n    implementation group: 'com.googlecode.json-simple', name: 'json-simple', version: '1.1'\r\n}\r\n\r\ntask buildZip(type: Zip) {\r\n    from compileJava\r\n    from processResources\r\n    into('lib') {\r\n        from configurations.runtimeClasspath\r\n    }\r\n}\r\nbuild.dependsOn buildZip\r\n\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/build.gradle b/build.gradle
+--- a/build.gradle	(revision 046034af55a6088fa9538d76390fa98e90c477e3)
++++ b/build.gradle	(date 1627970077677)
+@@ -1,3 +1,5 @@
++import java.net.http.HttpClient
++
+ plugins{
+     id 'java'
+     id "com.github.johnrengelman.shadow" version "2.0.3"
+@@ -16,7 +18,6 @@
+     implementation 'com.amazonaws:aws-java-sdk-core:1.9.23'
+     implementation 'com.amazonaws:aws-lambda-java-core:1.1.0'
+     implementation 'com.amazonaws:aws-lambda-java-events:1.1.0'
+-//    implementation 'com.google.code.gson:gson:2.8.5'
+     implementation group: 'com.googlecode.json-simple', name: 'json-simple', version: '1.1'
+ }
+ 

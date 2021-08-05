@@ -1,0 +1,11 @@
+Index: build/tmp/compileJava/source-classes-mapping.txt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/build/tmp/compileJava/source-classes-mapping.txt b/build/tmp/compileJava/source-classes-mapping.txt
+--- a/build/tmp/compileJava/source-classes-mapping.txt	(revision 3885fab2fa591df7b4ea5f400bb768e23f7cce88)
++++ b/build/tmp/compileJava/source-classes-mapping.txt	(date 1627889239612)
+@@ -1,0 +1,2 @@
++addPrefecture.java
++ addPrefecture

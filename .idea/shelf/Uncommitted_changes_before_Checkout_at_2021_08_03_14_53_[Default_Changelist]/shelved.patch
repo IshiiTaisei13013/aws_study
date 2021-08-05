@@ -1,0 +1,31 @@
+Index: build/tmp/compileJava/source-classes-mapping.txt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>getPrefecture.java\r\n getPrefecture\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/build/tmp/compileJava/source-classes-mapping.txt b/build/tmp/compileJava/source-classes-mapping.txt
+--- a/build/tmp/compileJava/source-classes-mapping.txt	
++++ b/build/tmp/compileJava/source-classes-mapping.txt	
+@@ -1,2 +1,2 @@
+-getPrefecture.java
+- getPrefecture
++GetPrefecture.java
++ GetPrefecture
+Index: src/main/java/getPrefecture.java
+===================================================================
+diff --git a/src/main/java/getPrefecture.java b/src/main/java/GetPrefecture.java
+rename from src/main/java/getPrefecture.java
+rename to src/main/java/GetPrefecture.java
+--- a/src/main/java/getPrefecture.java	
++++ b/src/main/java/GetPrefecture.java	
+@@ -14,7 +14,7 @@
+ import java.nio.charset.StandardCharsets;
+ import java.util.Map;
+ 
+-public class getPrefecture implements RequestHandler<Map<String, String>, String> {
++public class GetPrefecture implements RequestHandler<Map<String, String>, String> {
+ 
+     //環境変数の読み込み
+     static final String S3_BUCKET_NAME = System.getenv("S3_BUCKET_NAME");
