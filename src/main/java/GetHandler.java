@@ -25,18 +25,12 @@ public class GetHandler extends AbstractS3Crud{
         //取得したS3のファイルをJsonに変換
         JSONObject jsonObject = inputStreamToJSONObject(S3ObjectStream);
 
-        //変換できなかった場合、jsonObjectにはnullが代入される
-        if (jsonObject != null) {
-            try {
+        try {
                 //入力された郵便番号を元に地名を取得
                 return jsonObject.get(requestKey).toString();
-            } catch (NullPointerException e) {
+        } catch (NullPointerException e) {
                 //入力された郵便番号は見つからなかった
                 return "zipcode is not Found.";
-            }
-        } else {
-            //S3の読み込みが失敗または空の可能性がある。
-            return "jsonObject is null";
         }
     }
 }
