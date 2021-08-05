@@ -32,15 +32,8 @@ public class DeleteHandler extends AbstractS3Crud{
         //取得したS3のファイルをJsonに変換
         JSONObject jsonObject = inputStreamToJSONObject(S3ObjectStream);
 
-        //変換できなかった場合、jsonObjectにはnullが代入される
-        if (jsonObject != null) {
-
-            //Keyで削除(zipcodeで削除する)
-            jsonObject.remove(zipcode);
-        } else {
-            //S3の読み込みが失敗または空の可能性がある。
-            return "jsonObject is null";
-        }
+        //Keyで削除(zipcodeで削除する)
+        jsonObject.remove(zipcode);
 
         //JSONObjectをInputStreamに変換
         String str = jsonObject.toString();
