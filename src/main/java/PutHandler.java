@@ -8,8 +8,7 @@ import org.json.simple.JSONObject;
 import java.io.InputStream;
 import java.util.Map;
 
-public class PutHandler
-        extends AbstractS3Crud {
+public class PutHandler extends AbstractS3Crud {
 
     // POST methodで受け取ったリクエスト本文の
     // zipcodeとaddressでS3上のファイルを更新する
