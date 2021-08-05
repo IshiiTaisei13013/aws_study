@@ -11,7 +11,6 @@ import java.nio.charset.StandardCharsets;
 import java.util.Map;
 
 public class DeleteHandler extends AbstractS3Crud{
-
     //受け取ったKeyでS3上のファイルのKeyを削除する
     //削除後のファイルをアップロードして更新する。
     @Override
