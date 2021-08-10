@@ -37,6 +37,6 @@ public class CreateHandler extends AbstractS3Crud{
         S3Client.putObject(new PutObjectRequest(S3_BUCKET_NAME,name,null,null));
 
         //成功メッセージ
-        return "S3 file is updated!";
+        return "S3 file is created!";
     }
 }

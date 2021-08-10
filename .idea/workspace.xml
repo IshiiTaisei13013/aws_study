@@ -4,11 +4,30 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0904c5c9-878c-4647-9313-9c422aa2fff3" name="Changes" comment="[unv]">
+    <list default="true" id="0904c5c9-878c-4647-9313-9c422aa2fff3" name="Changes" comment="[update]リファクタ">
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2021_08_02_16_32_[Default_Changelist]/buildOutputCleanup.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2021_08_02_16_32_[Default_Changelist]/executionHistory.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2021_08_02_16_32_[Default_Changelist]/executionHistory.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2021_08_02_16_32_[Default_Changelist]/fileHashes.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2021_08_02_16_32_[Default_Changelist]/fileHashes.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2021_08_02_16_32_[Default_Changelist]/gradle_java11_test.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2021_08_02_16_32_[Default_Changelist]/gradle_java11_test.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2021_08_02_16_32_[Default_Changelist]/javaCompile.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2021_08_02_16_32_[Default_Changelist]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2021_08_02_16_32__Default_Changelist_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2021_08_02_16_44_[Default_Changelist]/Lambda_getPrefecture.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2021_08_02_16_44_[Default_Changelist]/buildOutputCleanup.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2021_08_02_16_44_[Default_Changelist]/classAnalysis.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2021_08_02_16_44_[Default_Changelist]/executionHistory.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2021_08_02_16_44_[Default_Changelist]/executionHistory.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2021_08_02_16_44_[Default_Changelist]/fileHashes.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2021_08_02_16_44_[Default_Changelist]/fileHashes.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2021_08_02_16_44_[Default_Changelist]/gradle_java11_test.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2021_08_02_16_44_[Default_Changelist]/javaCompile.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2021_08_02_16_44_[Default_Changelist]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2021_08_02_16_44__Default_Changelist_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/CreateHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/CreateHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/DeleteHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DeleteHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GetHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GetHandler.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -203,7 +222,7 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="980d78b4-8d6c-494a-8a15-551fedeab0ef" name="Default Changelist" comment="" />
+      <changelist id="0904c5c9-878c-4647-9313-9c422aa2fff3" name="Changes" comment="[update]リファクタ" />
       <created>1627265016322</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -482,7 +501,35 @@
       <option name="project" value="LOCAL" />
       <updated>1628152109274</updated>
     </task>
-    <option name="localTasksCounter" value="40" />
+    <task id="LOCAL-00040" summary="[update]リファクタ">
+      <created>1628152897742</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1628152897742</updated>
+    </task>
+    <task id="LOCAL-00041" summary="[update] todoを記述">
+      <created>1628152918688</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1628152918688</updated>
+    </task>
+    <task id="LOCAL-00042" summary="[unv]">
+      <created>1628152928438</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1628152928438</updated>
+    </task>
+    <task id="LOCAL-00043" summary="[update]リファクタ">
+      <created>1628153326426</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1628153326426</updated>
+    </task>
+    <option name="localTasksCounter" value="44" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -498,7 +545,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="[update] try文を追加" />
     <MESSAGE value="[update] コメントを削除" />
     <MESSAGE value="[update] コメントを追記" />
     <MESSAGE value="[update] json変換処理部分を見やすく" />
@@ -514,7 +560,6 @@
     <MESSAGE value="[update] 名前の変更" />
     <MESSAGE value="[update] コメントを変更" />
     <MESSAGE value="[UPD] バージョン修正" />
-    <MESSAGE value="[update]リファクタ" />
     <MESSAGE value="[update] 周辺をアップデート" />
     <MESSAGE value="[add] template.ymlを追加" />
     <MESSAGE value="[update]  GetHandlerを作成" />
@@ -522,7 +567,9 @@
     <MESSAGE value="[update]  リファクタ" />
     <MESSAGE value="[update] CreateHandlerを作成" />
     <MESSAGE value="[update] リファクタ" />
+    <MESSAGE value="[update] todoを記述" />
     <MESSAGE value="[unv]" />
-    <option name="LAST_COMMIT_MESSAGE" value="[unv]" />
+    <MESSAGE value="[update]リファクタ" />
+    <option name="LAST_COMMIT_MESSAGE" value="[update]リファクタ" />
   </component>
 </project>
