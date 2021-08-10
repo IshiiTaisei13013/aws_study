@@ -4,13 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="980d78b4-8d6c-494a-8a15-551fedeab0ef" name="Default Changelist" comment="[update] importを最適化">
-      <change beforePath="$PROJECT_DIR$/.gradle/6.8/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.8/executionHistory/executionHistory.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/6.8/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.8/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/checksums/checksums.lock" afterDir="false" />
+    <list default="true" id="980d78b4-8d6c-494a-8a15-551fedeab0ef" name="Default Changelist" comment="[update] CreateHandlerを記述">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/CreateHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/CreateHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/AbstractS3Crud.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/AbstractS3Crud.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -512,7 +508,14 @@
       <option name="project" value="LOCAL" />
       <updated>1628153326426</updated>
     </task>
-    <option name="localTasksCounter" value="44" />
+    <task id="LOCAL-00044" summary="[update] CreateHandlerを記述">
+      <created>1628564532883</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1628564532883</updated>
+    </task>
+    <option name="localTasksCounter" value="45" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -528,7 +531,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="[update] コメントを削除" />
     <MESSAGE value="[update] コメントを追記" />
     <MESSAGE value="[update] json変換処理部分を見やすく" />
     <MESSAGE value="[update] try-with-resourceに変更" />
@@ -553,6 +555,7 @@
     <MESSAGE value="[update] todoを記述" />
     <MESSAGE value="[unv]" />
     <MESSAGE value="[update]リファクタ" />
-    <option name="LAST_COMMIT_MESSAGE" value="[update]リファクタ" />
+    <MESSAGE value="[update] CreateHandlerを記述" />
+    <option name="LAST_COMMIT_MESSAGE" value="[update] CreateHandlerを記述" />
   </component>
 </project>

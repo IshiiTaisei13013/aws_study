@@ -22,7 +22,7 @@ public abstract class AbstractS3Crud
 
     //クライアント認証用の関数
     //実行ロールをlambdaにアタッチしないと使えない
-    public AmazonS3 authS3Client() {
+    protected AmazonS3 authS3Client() {
         AmazonS3 s3Client = AmazonS3ClientBuilder.standard()
                 .withRegion(Regions.US_EAST_2)
                 .build();
@@ -31,7 +31,7 @@ public abstract class AbstractS3Crud
     }
 
     //InputStream型をJSONObject型に変換する関数
-    public JSONObject inputStreamToJSONObject(InputStream is) {
+    protected JSONObject inputStreamToJSONObject(InputStream is) {
 
         InputStreamReader isr = new InputStreamReader(is, StandardCharsets.UTF_8);
 
@@ -47,7 +47,7 @@ public abstract class AbstractS3Crud
     }
 
     //JSONObject型をInputStream型に変換
-    public InputStream jSONObjectToInputStream(JSONObject jo){
+    protected InputStream jSONObjectToInputStream(JSONObject jo){
         String str = jo.toString();
         InputStream is = new ByteArrayInputStream(str.getBytes(StandardCharsets.UTF_8));
 
