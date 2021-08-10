@@ -12,14 +12,17 @@ import java.nio.charset.StandardCharsets;
 import java.util.Map;
 
 public class CreateHandler extends AbstractS3Crud{
-    //受け取った名前のファイルを作成する
+    // 受け取った名前と本文を持つファイルを作成する
     // 想定するリクエスト本文の形式 (eventの中身)
     // {
     //      "body":{
     //              "name" : "newFile.json",
+    //              "text" : "hogehoge"
     //              }
     // }
-    //
+
+    // api gatewayがbodyで囲んでくれるので
+    // curl等で呼ぶときは必要なのはnameとtextのみ
 
     @Override
     public String handleRequest(Map<String,Object> event, Context context) {
@@ -33,7 +36,10 @@ public class CreateHandler extends AbstractS3Crud{
         String name = body.get("name");
         String text = body.get("text");
 
+        //String to InputStream
         InputStream is = new ByteArrayInputStream(text.getBytes(StandardCharsets.UTF_8));
+
+        //メタデータを作成
         ObjectMetadata meta = new ObjectMetadata();
         meta.setContentLength(text.length());
 
