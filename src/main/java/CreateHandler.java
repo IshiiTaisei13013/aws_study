@@ -1,11 +1,8 @@
-import com.amazonaws.services.kinesisanalytics.model.Input;
 import com.amazonaws.services.lambda.runtime.Context;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.model.ObjectMetadata;
-import com.amazonaws.services.s3.model.PresignedUrlUploadRequest;
 import com.amazonaws.services.s3.model.PutObjectRequest;
 
-import java.io.BufferedInputStream;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
