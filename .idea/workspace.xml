@@ -4,9 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="980d78b4-8d6c-494a-8a15-551fedeab0ef" name="Default Changelist" comment="[update] CreateHandlerを記述">
+    <list default="true" id="980d78b4-8d6c-494a-8a15-551fedeab0ef" name="Default Changelist" comment="[update] リファクタ">
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2021_08_03_14_53_[Default_Changelist]1/buildOutputCleanup.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2021_08_03_14_53_[Default_Changelist]1/executionHistory.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2021_08_03_14_53_[Default_Changelist]1/executionHistory.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2021_08_03_14_53_[Default_Changelist]1/fileHashes.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2021_08_03_14_53_[Default_Changelist]1/fileHashes.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2021_08_03_14_53_[Default_Changelist]1/gradle_java11_test.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2021_08_03_14_53_[Default_Changelist]1/gradle_java11_test.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2021_08_03_14_53_[Default_Changelist]1/javaCompile.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2021_08_03_14_53_[Default_Changelist]1/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2021_08_03_14_53_[Default_Changelist]1/taskHistory.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2021_08_03_14_53__Default_Changelist_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2021_08_03_14_54_[Default_Changelist]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2021_08_03_14_54__Default_Changelist_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/AbstractS3Crud.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/AbstractS3Crud.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -515,7 +527,14 @@
       <option name="project" value="LOCAL" />
       <updated>1628564532883</updated>
     </task>
-    <option name="localTasksCounter" value="45" />
+    <task id="LOCAL-00045" summary="[update] リファクタ">
+      <created>1628574001633</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1628574001633</updated>
+    </task>
+    <option name="localTasksCounter" value="46" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -551,11 +570,11 @@
     <MESSAGE value="[update]  GetHandlerを修正" />
     <MESSAGE value="[update]  リファクタ" />
     <MESSAGE value="[update] CreateHandlerを作成" />
-    <MESSAGE value="[update] リファクタ" />
     <MESSAGE value="[update] todoを記述" />
     <MESSAGE value="[unv]" />
     <MESSAGE value="[update]リファクタ" />
     <MESSAGE value="[update] CreateHandlerを記述" />
-    <option name="LAST_COMMIT_MESSAGE" value="[update] CreateHandlerを記述" />
+    <MESSAGE value="[update] リファクタ" />
+    <option name="LAST_COMMIT_MESSAGE" value="[update] リファクタ" />
   </component>
 </project>
